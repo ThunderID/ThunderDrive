@@ -1,0 +1,42 @@
+<?php $__env->startSection('organization.content'); ?>
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-md-offset-3 text-center">
+			<?php echo $__env->make('web.alerts', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+			<form action="<?php echo e(route('web.me.organization.users.form.post', ['org_id' => $organization->id])); ?>" method="POST">
+				<input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
+				<p>
+					Add/Invite user by email
+					<input type='email' name='emails' value='' class='form-control text-center' autofocus placeholder='email'>
+				</p>
+			</form>
+		</div>
+	</div>
+
+	<div class='row'>
+		<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-md-offset-3">
+
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th class='text-right'># of Files</th>
+						<th class='text-right'>File Size</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php foreach($users as $user): ?>	
+						<tr>
+							<td> <?php echo e($user->name); ?> (<?php echo e($user->email); ?>)</td>
+							<td class='text-right'><?php echo e(number_format($user->files->count())); ?> files</td>
+							<td class='text-right'><?php echo e(number_format($user->files->sum('size'))); ?> MB</td>
+							<td width='3'><a href='<?php echo e(route("web.me.organization.users.remove.get", ['org_id' => $organization->id, 'user_id' => $user->id])); ?>' alt='remove' class='text-danger'><i class='fa fa-close'></i></a> </td>
+						</tr>
+					<?php endforeach; ?>
+				</tbody>
+			</table>
+
+			</div>
+		</div>
+	</div>
+<?php $__env->stopSection(); ?>

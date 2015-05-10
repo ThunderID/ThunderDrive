@@ -1,0 +1,50 @@
+<?php $__env->startSection('html.title'); ?>
+	ThunderDrive - Me
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('nav'); ?>
+	<?php echo $__env->make('web.pages.me.components.nav', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+	<div class="jumbotron vcenter text-center">
+		<div class="container">
+			<h2><?php echo e($org->name); ?></h2>
+
+			<?php if($org->users): ?>
+				<p>Current team members</p>
+				<p>
+				<?php foreach($org->users as $user): ?>
+					<a href="<?php echo e(route('web.me.organization.users.remove.get', ['id' => $org->id, 'user_id' => $user->id])); ?>" class='btn btn-default' title='click to delete'><i class='fa fa-times-circle'></i> <?php echo e($user->email); ?></a>
+				<?php endforeach; ?>
+				</p>
+			<?php endif; ?>
+
+
+			<br/>
+			<p>Please add emails to be included in this organization (separate with commas)</p>
+
+
+			<form class='form' action='<?php echo e(route("web.me.organization.users.form.post", ['org_id' => $org->id])); ?>' method='post'>
+				<input type='hidden' name='_token' value="<?php echo e(csrf_token()); ?>">
+				<div class="row">
+					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xs-offset-3">
+						<p><input type='text' name='emails' value='' class='form-control' autofocus></p>
+						<br/>
+						<p><button type='submit' class="btn btn-default btn-lg">Submit</button></p>
+					</div>
+				</div>
+			</form>
+
+
+			<p>
+				<?php if($org->users->count() > 1): ?>
+					<a class='small light' href="<?php echo e(route('web.me')); ?>">Done <i class='fa fa-angle-right'></i></a>
+				<?php else: ?>
+					<a class='small light' href="<?php echo e(route('web.me')); ?>">Skip <i class='fa fa-angle-right'></i></a>
+				<?php endif; ?>
+			</p>
+		</div>
+	</div>
+
+<?php $__env->stopSection(); ?>

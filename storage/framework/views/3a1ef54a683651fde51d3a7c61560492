@@ -1,0 +1,40 @@
+<?php $__env->startSection('organization.content'); ?>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xs-offset-2 text-center">
+				<?php if($category->id): ?>
+					<h4 class='text-center'>EDIT CATEGORY</h4>
+				<?php else: ?>
+					<h4 class='text-center'>CREATE CATEGORY</h4>
+				<?php endif; ?>
+
+				<?php echo $__env->make('web.alerts', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+				
+				Please enter category detail below
+				<br>
+
+				<?php if($category->id): ?>
+					<?php echo Form::open(['url' => route('web.me.organization.category.store', ['org_id' => $organization->id, 'cat_id' => $category->id]), 'method' => 'post']); ?>
+
+				<?php else: ?>
+					<?php echo Form::open(['url' => route('web.me.organization.category.store', ['org_id' => $organization->id]), 'method' => 'post']); ?>
+
+				<?php endif; ?>
+
+					<?php echo Form::text('title', $category->title, ['class' => 'form-control text-center', 'autofocus' => 'autofocus']); ?>
+
+
+					<br/>
+					<?php echo Form::submit('Submit', ['class' => 'btn btn-default']); ?>
+
+
+					<?php if($category->id): ?>
+						<a class='btn btn-default' href="<?php echo e(route('web.me.organization.category.delete', ['org_id' => $organization->id, 'cat_id' => $category->id])); ?>">Delete</a>
+					<?php endif; ?>
+
+				<?php echo Form::close(); ?>
+
+			</div>
+		</div>
+	</div>
+<?php $__env->stopSection(); ?>

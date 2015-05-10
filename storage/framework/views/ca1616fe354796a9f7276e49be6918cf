@@ -1,0 +1,124 @@
+<?php $__env->startSection('organization.content'); ?>
+	<div class='container'>
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+				<h3>CLONE &amp; MODIFY</h3>
+				
+				<?php echo $__env->make('web.alerts', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+				
+				<?php echo Form::open(['url' => route('web.me.organization.file.clone.post', ['org_id' => $organization->id, 'file_id' => $file->id]), 'method' => 'post', 'files' => true ]); ?>
+
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+						<div class="well text-left">
+							<?php if($file->id): ?>
+								<strong>ORIGINAL</strong>
+								<p><?php echo HTML::image($file->fullurl, $file->title, ['class' => 'img-responsive img-thumbnail']); ?></p>
+							<?php endif; ?>
+
+							<h4>
+								<?php echo e($file->title); ?>
+
+								<br/><small><?php echo e($file->category->title); ?></small>
+							</h4>
+
+							<div class="row">
+									<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+										<span class='text-sm'><i class='fa fa-user'></i> <?php echo e($file->user->name); ?> </span>
+									</div>
+									<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+										<?php if(str_is('image/*', $file->mime)): ?>
+											<span class='text-sm'><i class='fa fa-file-image-o'></i> <?php echo e($file->mime); ?></span>
+										<?php elseif(str_is('application/pdf', $file->mime)): ?>
+											<span class='text-sm'><i class='fa fa-file-pdf-o'></i> <?php echo e($file->mime); ?></span>
+										<?php endif; ?>
+									</div>
+									<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+										<span class='text-sm'><i class='fa fa-dashboard'></i> <?php echo e(number_format($file->size_human['size'], 2)); ?> <?php echo e($file->size_human['unit']); ?></span>
+									</div>
+									<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+										<span class='text-sm'><i class='fa fa-calendar'></i> <?php echo e(\Carbon\Carbon::parse($file->created_at)->format('d-M-Y [H:i]')); ?> </span>
+									</div>
+
+
+									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center mb-md">
+										<br/>
+
+										<div class="btn-group">
+											<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+												Action <span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu" role="menu">
+												<li><a href="<?php echo e(route('web.me.organization.file.delete', ['org_id' => $organization->id, 'id' => $file->id])); ?>" >Delete</a></li>
+												<li><a href="<?php echo e(route('web.me.organization.file.edit', ['org_id' => $organization->id, 'id' => $file->id])); ?>" >Edit</a></li>
+												<?php if(str_is('image/*', $file->mime)): ?>
+													<li><a href="<?php echo e(route('web.me.organization.file.clone', ['org_id' => $organization->id, 'file_id' => $file->id])); ?>" >Clone</a></li>
+												<?php else: ?>
+													<li><a href="javascript:;" class="text-mute disabled">Clone</a></li>
+												<?php endif; ?>
+												<li class='divider'></li>
+												<li class=''><a href='javascript:;' class='zeroclipboard' data-clipboard-text="<?php echo e($file->fullurl); ?>">Copy URL</a></li>
+												<li class=''><a data-toggle="modal" href='#file_url_modal' class='show_url' data-thumbnail-url="<?php echo e($file->fullurl); ?>" data-url="<?php echo e($file->fullurl); ?>">Show URL</a></li>
+												<li class='divider'></li>
+												<li class=''><a href="<?php echo e(route('web.file.download', ['file_id' => $file->id, 'file_key' => $file->file_key])); ?>">Download</a></li>
+												<li class=''><a href='javascript:;' class='zeroclipboard' data-clipboard-text="<?php echo e(route('web.file.download', ['file_id' => $file->id, 'file_key' => $file->file_key])); ?>">Copy Download URL</a></li>
+												<li class=''><a data-toggle="modal" href='#file_url_modal' class='show_url' data-thumbnail-url="<?php echo e($file->fullurl); ?>" data-url="<?php echo e(route('web.file.download', ['file_id' => $file->id, 'file_key' => $file->file_key])); ?>">Show Download URL</a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+						<div class="well text-left">
+							<h3>MODIFY</h3>
+							<p>
+								<div class="row">
+									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+										<strong>New Image Size (previous size: <?php echo e($file->width); ?> x <?php echo e($file->height); ?> px)</strong>
+										<div class="input-group">
+											<?php echo Form::text('width', null, ['class' => 'form-control col-xs-4', 'placeholder' => "Width (px)"]); ?>
+
+											<span class="input-group-addon">x</span>
+											<?php echo Form::text('height', null, ['class' => 'form-control col-xs-4', 'placeholder' => "Height (px)"]); ?>
+
+										</div>
+									</div>
+								</div>
+							</p>
+
+							<p>
+								<strong>Title</strong>
+								<?php echo Form::text('title', null, ['class' => 'form-control', 'placeholder' => "title"]); ?>
+
+							</p>
+
+							<p>
+								<strong>Select Category</strong>
+								<?php echo Form::select('category', $organization->categories->lists('title', 'id'), $file->category->id, ['class' => 'form-control', 'placeholder' => "Enter title"]); ?>
+
+							</p>
+
+							<p>
+								<strong>Keep proportion</strong>
+								<?php echo Form::select('proportion', [1 => "Yes", 2 => "No"], null, ['class' => 'form-control', 'placeholder' => "proportion"]); ?>
+
+							</p>
+
+							<?php /* <br/><?php echo Form::checkbox('is_public', $file->is_public, ['class' => 'form-control', 'placeholder' => "Enter title"]); ?> Set as public file (can be accessed by everyone - outside world) */ ?>
+
+							<p class='text-center mt-lg'>
+								<?php echo Form::submit('Submit', ['class' => 'btn btn-default']); ?>
+
+							</p>
+						</div>
+					</div>
+				</div>
+				<?php echo Form::close(); ?>
+
+			</div>
+		</div>
+	</div>
+<?php $__env->stopSection(); ?>

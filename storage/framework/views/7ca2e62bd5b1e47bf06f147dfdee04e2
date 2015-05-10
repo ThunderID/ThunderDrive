@@ -1,0 +1,14 @@
+<div class="btn-group">
+	<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+		Select Organization to Manage <span class="caret"></span>
+	</button>
+	<ul class="dropdown-menu" role="menu">
+		<li><a href="<?php echo e(route('web.me')); ?>">My Dashboard</a></li>
+		<li class="divider"></li>
+		<?php foreach(Auth::user()->organizations as $org): ?>
+			<li><a href="<?php echo e(route('web.me.organization.show', ['org_id' => $org->id])); ?>"><?php echo e($org->name); ?></a></li>
+		<?php endforeach; ?>
+		<li class="divider"></li>
+		<li><a href="<?php echo e(route('web.me.organization.create')); ?>">Create New Organization</a></li>
+	</ul>
+</div>

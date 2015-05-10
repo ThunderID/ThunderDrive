@@ -1,0 +1,96 @@
+[2015-05-10 20:21:43] local.ERROR: exception 'ReflectionException' with message 'Class  does not exist' in /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/Container/Container.php:776
+Stack trace:
+#0 /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/Container/Container.php(776): ReflectionClass->__construct('')
+#1 /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/Container/Container.php(656): Illuminate\Container\Container->build('', Array)
+#2 /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(644): Illuminate\Container\Container->make('', Array)
+#3 /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(124): Illuminate\Foundation\Application->make('')
+#4 /Users/erickmo/Projects/Ongoing/ThunderDrive/app/Http/Middleware/AuthenticateMember.php(40): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#5 /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(125): App\Http\Middleware\AuthenticateMember->handle(Object(Illuminate\Http\Request), Object(Closure))
+#6 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#7 /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(101): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#8 /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/Routing/Router.php(703): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#9 /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/Routing/Router.php(670): Illuminate\Routing\Router->runRouteWithinStack(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request))
+#10 /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/Routing/Router.php(628): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#11 /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(214): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#12 [internal function]: Illuminate\Foundation\Http\Kernel->Illuminate\Foundation\Http\{closure}(Object(Illuminate\Http\Request))
+#13 /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(141): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#14 /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/VerifyCsrfToken.php(43): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#15 /Users/erickmo/Projects/Ongoing/ThunderDrive/app/Http/Middleware/VerifyCsrfToken.php(17): Illuminate\Foundation\Http\Middleware\VerifyCsrfToken->handle(Object(Illuminate\Http\Request), Object(Closure))
+#16 /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(125): App\Http\Middleware\VerifyCsrfToken->handle(Object(Illuminate\Http\Request), Object(Closure))
+#17 /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/View/Middleware/ShareErrorsFromSession.php(55): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#18 /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(125): Illuminate\View\Middleware\ShareErrorsFromSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#19 /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(61): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#20 /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(125): Illuminate\Session\Middleware\StartSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#21 /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse.php(36): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#22 /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(125): Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse->handle(Object(Illuminate\Http\Request), Object(Closure))
+#23 /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/EncryptCookies.php(40): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#24 /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(125): Illuminate\Cookie\Middleware\EncryptCookies->handle(Object(Illuminate\Http\Request), Object(Closure))
+#25 /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/CheckForMaintenanceMode.php(42): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#26 /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(125): Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode->handle(Object(Illuminate\Http\Request), Object(Closure))
+#27 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#28 /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(101): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#29 /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(115): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#30 /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(84): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#31 /Users/erickmo/Projects/Ongoing/ThunderDrive/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
+#32 /Users/erickmo/Projects/Ongoing/ThunderDrive/server.php(21): require_once('/Users/erickmo/...')
+#33 {main}  
+[2015-05-10 20:21:43] local.ERROR: exception 'ReflectionException' with message 'Class  does not exist' in /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/Container/Container.php:776
+Stack trace:
+#0 /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/Container/Container.php(776): ReflectionClass->__construct('')
+#1 /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/Container/Container.php(656): Illuminate\Container\Container->build('', Array)
+#2 /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(644): Illuminate\Container\Container->make('', Array)
+#3 /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(131): Illuminate\Foundation\Application->make('')
+#4 /Users/erickmo/Projects/Ongoing/ThunderDrive/public/index.php(57): Illuminate\Foundation\Http\Kernel->terminate(Object(Illuminate\Http\Request), Object(Symfony\Component\HttpFoundation\Response))
+#5 /Users/erickmo/Projects/Ongoing/ThunderDrive/server.php(21): require_once('/Users/erickmo/...')
+#6 {main}  
+[2015-05-10 20:22:01] local.ERROR: exception 'ReflectionException' with message 'Class  does not exist' in /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/Container/Container.php:776
+Stack trace:
+#0 /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/Container/Container.php(776): ReflectionClass->__construct('')
+#1 /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/Container/Container.php(656): Illuminate\Container\Container->build('', Array)
+#2 /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(644): Illuminate\Container\Container->make('', Array)
+#3 /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(124): Illuminate\Foundation\Application->make('')
+#4 /Users/erickmo/Projects/Ongoing/ThunderDrive/app/Http/Middleware/AuthenticateMember.php(40): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#5 /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(125): App\Http\Middleware\AuthenticateMember->handle(Object(Illuminate\Http\Request), Object(Closure))
+#6 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#7 /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(101): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#8 /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/Routing/Router.php(703): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#9 /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/Routing/Router.php(670): Illuminate\Routing\Router->runRouteWithinStack(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request))
+#10 /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/Routing/Router.php(628): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#11 /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(214): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#12 [internal function]: Illuminate\Foundation\Http\Kernel->Illuminate\Foundation\Http\{closure}(Object(Illuminate\Http\Request))
+#13 /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(141): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#14 /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/VerifyCsrfToken.php(43): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#15 /Users/erickmo/Projects/Ongoing/ThunderDrive/app/Http/Middleware/VerifyCsrfToken.php(17): Illuminate\Foundation\Http\Middleware\VerifyCsrfToken->handle(Object(Illuminate\Http\Request), Object(Closure))
+#16 /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(125): App\Http\Middleware\VerifyCsrfToken->handle(Object(Illuminate\Http\Request), Object(Closure))
+#17 /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/View/Middleware/ShareErrorsFromSession.php(55): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#18 /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(125): Illuminate\View\Middleware\ShareErrorsFromSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#19 /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(61): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#20 /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(125): Illuminate\Session\Middleware\StartSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#21 /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse.php(36): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#22 /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(125): Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse->handle(Object(Illuminate\Http\Request), Object(Closure))
+#23 /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/EncryptCookies.php(40): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#24 /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(125): Illuminate\Cookie\Middleware\EncryptCookies->handle(Object(Illuminate\Http\Request), Object(Closure))
+#25 /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/CheckForMaintenanceMode.php(42): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#26 /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(125): Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode->handle(Object(Illuminate\Http\Request), Object(Closure))
+#27 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#28 /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(101): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#29 /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(115): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#30 /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(84): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#31 /Users/erickmo/Projects/Ongoing/ThunderDrive/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
+#32 /Users/erickmo/Projects/Ongoing/ThunderDrive/server.php(21): require_once('/Users/erickmo/...')
+#33 {main}  
+[2015-05-10 20:22:01] local.ERROR: exception 'ReflectionException' with message 'Class  does not exist' in /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/Container/Container.php:776
+Stack trace:
+#0 /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/Container/Container.php(776): ReflectionClass->__construct('')
+#1 /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/Container/Container.php(656): Illuminate\Container\Container->build('', Array)
+#2 /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(644): Illuminate\Container\Container->make('', Array)
+#3 /Users/erickmo/Projects/Ongoing/ThunderDrive/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(131): Illuminate\Foundation\Application->make('')
+#4 /Users/erickmo/Projects/Ongoing/ThunderDrive/public/index.php(57): Illuminate\Foundation\Http\Kernel->terminate(Object(Illuminate\Http\Request), Object(Symfony\Component\HttpFoundation\Response))
+#5 /Users/erickmo/Projects/Ongoing/ThunderDrive/server.php(21): require_once('/Users/erickmo/...')
+#6 {main}  
+[2015-05-10 21:07:54] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'App\Http\Controllers\Web\Validator' not found' in /Users/erickmo/Projects/Ongoing/ThunderDrive/app/Http/Controllers/Web/MeController.php:36
+Stack trace:
+#0 {main}  
+[2015-05-10 21:43:03] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'App\Http\Controllers\Web\Hash' not found' in /Users/erickmo/Projects/Ongoing/ThunderDrive/app/Http/Controllers/Web/MeController.php:44
+Stack trace:
+#0 {main}  

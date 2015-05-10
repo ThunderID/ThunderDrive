@@ -1,0 +1,22 @@
+<?php $__env->startSection('title'); ?>
+	ThunderDrive - Me
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('nav'); ?>
+	<?php echo $__env->make('web.pages.me.components.nav', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+	<?php if(!Auth::user()->name): ?>
+		<div class="jumbotron vcenter">
+			<div class="container">
+				<h1>Please fill in your name to proceed</h1>
+				<p>Contents ...</p>
+				<p>
+					<a class="btn btn-primary btn-lg">Learn more</a>
+				</p>
+			</div>
+		</div>
+	<?php endif; ?>
+
+<?php $__env->stopSection(); ?>

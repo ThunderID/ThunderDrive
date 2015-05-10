@@ -1,0 +1,31 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<?php if($organization->owner->id == Auth::id()): ?>
+			<a href='<?php echo e(route("web.me.organization.user.index", ['org_id' => $organization->id])); ?>' class='pull-right text-primary'><i class='fa fa-plus'></i></a>
+		<?php endif; ?>
+		<h3 class="panel-title">USERS</h3>
+	</div>
+	<div class="panel-body">
+		<div class="panel-max500 panel-scroll">
+			<?php $initial = ''; ?>
+
+			<?php $__empty_1 = true; foreach($organization->users as $x): $__empty_1 = false; ?>
+				<?php if(!str_is(strtolower($initial), strtolower(substr($x->name, 0, 1)))): ?>
+					<?php $initial = strtoupper(substr($x->name, 0, 1)); ?>
+					<div class='initial text-center'><?php echo e($initial); ?></div>
+				<?php endif; ?>
+				<li class='menu <?php echo e($filters["user"] == $x->id ? "active" : ""); ?>'>
+					<a href='<?php echo e(route("web.me.organization.file.index", array_merge(["org_id" => $organization->id], (array) $filters, ["user" => $x->id] ))); ?>' class='text-default'><?php echo e($x->name); ?></a>
+				</li>
+			<?php endforeach; if ($__empty_1): ?>
+				No User
+			<?php endif; ?>
+		</div>
+	</div>
+	<div class="panel-footer">
+		<div class='text-center'>
+			<?php echo e($organization->users->count()); ?> users
+		</div>
+	</div>
+</div>
+

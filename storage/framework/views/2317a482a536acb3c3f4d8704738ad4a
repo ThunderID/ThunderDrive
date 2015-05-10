@@ -1,0 +1,32 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<a href='<?php echo e(route("web.me.organization.category.form", ['org_id' => $organization->id])); ?>' class='pull-right text-primary'><i class='fa fa-plus'></i></a>
+		<h3 class="panel-title">Categories</h3>
+	</div>
+	<div class="panel-body">
+		<div class="panel-max500 panel-scroll">
+			<?php $initial = ''; ?>
+
+			<?php $__empty_1 = true; foreach($organization->categories as $x): $__empty_1 = false; ?>
+				<?php if(!str_is(strtolower($initial), strtolower(substr($x->title, 0, 1)))): ?>
+					<?php $initial = strtoupper(substr($x->title, 0, 1)); ?>
+					<div class='alert-default text-center'><?php echo e($initial); ?></div>
+				<?php endif; ?>
+
+				<li class='menu <?php echo e($filters["category"] == $x->id ? "active" : ""); ?>'>
+					<?php if($x->user_id == Auth::id()): ?>
+						<a href='<?php echo e(route("web.me.organization.category.form", ["org_id" => $organization->id, "cat_id" => $x->id])); ?>' class='pull-right text-default'><i class='fa fa-edit'></i></a>
+					<?php endif; ?>
+					<a href='<?php echo e(route("web.me.organization.file.index", array_merge(["org_id" => $organization->id], (array) $filters, ["category" => $x->id] ))); ?>' class='text-default'><?php echo e($x->title); ?></a>
+				</li>
+			<?php endforeach; if ($__empty_1): ?>
+				No Category
+			<?php endif; ?>
+		</div>
+	</div>
+	<div class="panel-footer">
+		<div class='text-center'>
+			<?php echo e($organization->categories->count()); ?> categories
+		</div>
+	</div>
+</div>

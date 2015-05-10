@@ -1,0 +1,21 @@
+<?php if($errors->count()): ?>
+	<div class="alert alert-danger">
+		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+		<?php foreach($errors->all() as $error): ?>
+			<?php echo e($error); ?>
+
+		<?php endforeach; ?>
+	</div>
+<?php endif; ?>
+
+<?php $alert_type = ['alert_success', 'alert_danger', 'alert_info', 'alert_warning']; ?>
+
+<?php foreach($alert_type as $x): ?>
+	<?php if(Session::has($x)): ?>
+		<div class="alert <?php echo e(str_replace('_','-',$x)); ?>">
+			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+			<?php echo e(Session::get($x)); ?>
+
+		</div>
+	<?php endif; ?>
+<?php endforeach; ?>

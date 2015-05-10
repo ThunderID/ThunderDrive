@@ -1,0 +1,28 @@
+<?php $__env->startSection('html.title'); ?>
+	ThunderDrive - Me
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('nav'); ?>
+	<?php echo $__env->make('web.pages.me.components.nav', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+	<?php if(!Auth::user()->name): ?>
+		<div class="jumbotron vcenter text-center">
+			<div class="container">
+				<h4>Please fill in your name to proceed</h4>
+				<form class='form' action='<?php echo e(route("web.me.register.post")); ?>' method='post'>
+					<input type='hidden' name='_token' value="<?php echo e(csrf_token()); ?>">
+					<div class="row">
+						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xs-offset-3">
+							<p><input type='text' name='name' value='' class='form-control' autofocus></p>
+							<br/>
+							<p ><button type='submit' class="btn btn-default btn-lg">Submit</button></p>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	<?php endif; ?>
+
+<?php $__env->stopSection(); ?>

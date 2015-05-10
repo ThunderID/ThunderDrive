@@ -1,0 +1,31 @@
+<?php $__env->startSection('html.title'); ?>
+	ThunderDrive - Me
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('nav'); ?>
+	<?php echo $__env->make('web.pages.me.components.nav', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+			<h1>
+				<?php echo e($organization->name); ?>
+
+				<p>
+					<div class="btn-group">
+						<a href="<?php echo e(route('web.me.organization.show', 			['org_id' => $organization->id])); ?>" class="btn btn-default <?php echo e($mode == 'dashboard' || $mode == '' ? 'active' : ''); ?>">Dashboard</a>
+						<a href="<?php echo e(route('web.me.organization.file.index', 		['org_id' => $organization->id])); ?>" class="btn btn-default <?php echo e($mode == 'files' ? 'active' : ''); ?>">FILES</a>
+						<?php if($organization->owner->id == Auth::user()->id): ?>
+							<a href="<?php echo e(route('web.me.organization.user.index', 	['org_id' => $organization->id])); ?>" class="btn btn-default <?php echo e($mode == 'users' ? 'active' : ''); ?>">USERS</a>
+							<a href="<?php echo e(route('web.me.organization.edit', 		['org_id' => $organization->id])); ?>" class="btn btn-default <?php echo e($mode == 'edit' ? 'active' : ''); ?>">EDIT</a>
+						<?php endif; ?>
+					</div>
+				</p>
+			</h1>
+		</div>
+	</div>
+
+	<?php echo $__env->yieldContent('organization.content', '[organization.content]'); ?>
+<?php $__env->stopSection(); ?>

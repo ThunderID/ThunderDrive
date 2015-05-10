@@ -1,0 +1,31 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<a href='<?php echo e(route("web.me.organization.category.form")); ?>' class='pull-right text-primary'><i class='fa fa-plus'></i></a>
+		<h3 class="panel-title">USERS</h3>
+	</div>
+	<div class="panel-body">
+		<div class="panel-max300 panel-scroll">
+			<?php $initial = ''; ?>
+
+			<?php $__empty_1 = true; foreach($organization->users as $x): $__empty_1 = false; ?>
+				<?php if(!str_is(strtolower($initial), strtolower(substr($x->name, 0, 1)))): ?>
+					<?php if($initial): ?>
+						</ul>
+					<?php endif; ?>
+
+					<?php $initial = strtoupper(substr($x->name, 0, 1)); ?>
+					<div class='alert-default text-center'><?php echo e($initial); ?></div>
+					<ul>
+				<?php endif; ?>
+				<li><a href='<?php echo e(route("web.me.organization.show", ["org_id" => $organization->id, "mode" => $mode, "category" => $x->id])); ?>' class='text-default'><?php echo e($x->name); ?></a></li>
+			<?php endforeach; if ($__empty_1): ?>
+				No Category
+			<?php endif; ?>
+		</div>
+	</div>
+	<div class="panel-footer">
+		<div class='text-center'>
+			<?php echo e($organization->users->count()); ?> users
+		</div>
+	</div>
+</div>

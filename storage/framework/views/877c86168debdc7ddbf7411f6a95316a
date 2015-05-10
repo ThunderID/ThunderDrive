@@ -1,0 +1,11 @@
+<p>Dear, <?php echo e($user->name); ?></p>
+
+<p>We have received a request to reset your password in ThunderDrive (http://drive.thunder.id). If this is you who asked for the reset, please follow 
+the link below</p>
+
+<p><a href='<?php echo e(route("web.reset_password.get", ["id" => $user->id, "key" => Hash::make($user->key)])); ?>'>Click here to reset your password</a></p>
+
+<p>
+	Your sincerely,
+	<br/>ThunderDrive team
+</p>
