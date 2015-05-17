@@ -13,7 +13,28 @@
 						<div class="well text-left">
 							@if ($file->id)
 								<strong>Current File</strong>
-								<p>{!! HTML::image($file->fullurl, $file->title, ['class' => 'img-responsive img-thumbnail'])!!}</p>
+								<div class='row'>
+									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+										{!! HTML::image($file->fullurl, '', ['class' => 'img-responsive']) !!}
+									</div>
+
+									<p><div class="clearfix"></div></p>
+
+									<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+										<span class=''><i class='fa fa-user'></i> {{$file->user->name}}</span>
+									</div>
+									<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+										@if (str_is('image/*', $file->mime))
+											<span class=''><i class='fa fa-file-image-o'></i> {{$file->mime}}</span>
+										@endif
+									</div>
+									<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+										<span class=''><i class='fa fa-dashboard'></i> {{number_format($file->size_human['size'],2)}} {{$file->size_human['unit']}}</span>
+									</div>
+									<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+										<span class=''><i class='fa fa-calendar'></i> {{\Carbon\Carbon::parse($file->created_at)->format('d-M-Y [H:i]')}} </span>
+									</div>
+								</div>
 							@else
 								<strong>Select file below</strong>
 								{{-- {!! Form::text('MAX_FILE_SIZE', ini_get('upload_max_filesize') * 1024) !!} --}}

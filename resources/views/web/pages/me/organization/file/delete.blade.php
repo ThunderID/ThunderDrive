@@ -26,7 +26,7 @@
 									@endif
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-									<span class=''><i class='fa fa-dashboard'></i> {{$file->sizeStr}}</span>
+									<span class=''><i class='fa fa-dashboard'></i> {{number_format($file->size_human['size'],2)}} {{$file->size_human['unit']}}</span>
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
 									<span class=''><i class='fa fa-calendar'></i> {{\Carbon\Carbon::parse($file->created_at)->format('d-M-Y [H:i]')}} </span>
