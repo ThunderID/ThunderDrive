@@ -14,7 +14,29 @@
 						<div class="well text-left">
 							<?php if($file->id): ?>
 								<strong>Current File</strong>
-								<p><?php echo HTML::image($file->fullurl, $file->title, ['class' => 'img-responsive img-thumbnail']); ?></p>
+								<div class='row'>
+									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+										<?php echo HTML::image($file->fullurl, '', ['class' => 'img-responsive']); ?>
+
+									</div>
+
+									<p><div class="clearfix"></div></p>
+
+									<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+										<span class=''><i class='fa fa-user'></i> <?php echo e($file->user->name); ?></span>
+									</div>
+									<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+										<?php if(str_is('image/*', $file->mime)): ?>
+											<span class=''><i class='fa fa-file-image-o'></i> <?php echo e($file->mime); ?></span>
+										<?php endif; ?>
+									</div>
+									<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+										<span class=''><i class='fa fa-dashboard'></i> <?php echo e(number_format($file->size_human['size'],2)); ?> <?php echo e($file->size_human['unit']); ?></span>
+									</div>
+									<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+										<span class=''><i class='fa fa-calendar'></i> <?php echo e(\Carbon\Carbon::parse($file->created_at)->format('d-M-Y [H:i]')); ?> </span>
+									</div>
+								</div>
 							<?php else: ?>
 								<strong>Select file below</strong>
 								<?php /* <?php echo Form::text('MAX_FILE_SIZE', ini_get('upload_max_filesize') * 1024); ?> */ ?>

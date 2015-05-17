@@ -12,7 +12,7 @@
 						<div class="well text-left">
 							<div class='row'>
 								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-									<?php echo HTML::image($file->url, '', ['class' => 'img-responsive']); ?>
+									<?php echo HTML::image($file->fullurl, '', ['class' => 'img-responsive']); ?>
 
 								</div>
 
@@ -27,7 +27,7 @@
 									<?php endif; ?>
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-									<span class=''><i class='fa fa-dashboard'></i> <?php echo e($file->sizeStr); ?></span>
+									<span class=''><i class='fa fa-dashboard'></i> <?php echo e(number_format($file->size_human['size'],2)); ?> <?php echo e($file->size_human['unit']); ?></span>
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
 									<span class=''><i class='fa fa-calendar'></i> <?php echo e(\Carbon\Carbon::parse($file->created_at)->format('d-M-Y [H:i]')); ?> </span>
