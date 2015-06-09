@@ -22,7 +22,7 @@ class FileObserver {
 		$rules['width']				= ['numeric'];
 		$rules['height']			= ['numeric'];
 		$rules['is_public']			= ['boolean'];
-		$rules['organization_id'] 	= ['required', 'integer', 'exists:categories,id'];
+		$rules['organization_id'] 	= ['required', 'integer', 'exists:organizations,id'];
 		$rules['user_id'] 			= ['required', 'integer', 'exists:users,id'];
 		$rules['category_id'] 		= ['required', 'integer', 'exists:categories,id'];
 		$rules['file_key'] 			= ['required', 'min:40', 'unique:' . $model->getTable() . ',file_key'];
