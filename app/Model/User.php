@@ -78,7 +78,17 @@ class User extends BaseModel implements AuthenticatableContract, CanResetPasswor
 	function getTotalFileSizeHumanAttribute()
 	{
 		$size = $this->total_file_size;
+		return $this->humanize_file_size($size);
+	}
 
+	function FilesizeInOrganization($org_id)
+	{
+		$size = $this->files()->where('organization_id', '=', $org_id)->sum('size');
+		return $this->humanize_file_size($size);
+	}
+
+	function humanize_file_size($size)
+	{
 		if ($size >= pow(1024, 4))
 		{
 			$result['size'] = $size/pow(1024,4);

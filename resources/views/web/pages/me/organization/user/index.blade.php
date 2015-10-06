@@ -29,7 +29,10 @@
 						<tr>
 							<td> {{$user->name}} ({{$user->email}})</td>
 							<td class='text-right'>{{number_format($user->files->count())}} files</td>
-							<td class='text-right'>{{number_format($user->total_file_size_human['size'],2)}} {{$user->total_file_size_human['unit']}} </td>
+							<?php 
+								$file_size = $user->FileSizeInOrganization($organization->id);
+							?>
+							<td class='text-right'>{{number_format($file_size['size'],2)}} {{$file_size['unit']}} </td>
 							<td width='3'><a href='{{route("web.me.organization.user.remove", ['org_id' => $organization->id, 'user_id' => $user->id])}}' alt='remove' class='text-danger'><i class='fa fa-close'></i></a> </td>
 						</tr>
 					@endforeach
